@@ -1,3 +1,6 @@
+//Push and update commands
+//Rerun every time commands are adjusted / changed
+
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
