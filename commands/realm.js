@@ -5,6 +5,6 @@ module.exports = {
 		.setName('realm')
 		.setDescription('The state of the realm'),
 	async execute(interaction) {
-		await interaction.reply({ content:`THe REALM OF ${interaction.guild.name} HAS ${interaction.guild.memberCount} SOULS TO CLAIM!`, ephemeral: true });
+		await interaction.reply({ content:`THE REALM OF ${interaction.guild.name.toUpperCase()} HAS ${interaction.guild.memberCount} SOULS TO CLAIM!`, ephemeral: true });
 	},
 };
