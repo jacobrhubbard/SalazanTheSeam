@@ -2,23 +2,23 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('smite')
-		.setDescription('Remove from thy realm')
+		.setName('subjugate')
+		.setDescription('Show them who is boss')
         .addUserOption(option => 
 			option
 				.setName('target')
 				.setRequired(true)
-				.setDescription('the one that shall die')
+				.setDescription('salazans new slave')
 			),
 	async execute(interaction) {
 		const target = interaction.options.getMember('target');
-		await interaction.reply({ content:`SMITING ${target}` });
-		if(!target.kickable) {
+		await interaction.reply({ content:`SUBJUGATING ${target}` });
+		if(!target.member.hasPermission('MANAGE_NICKNAMES')) {
 			setTimeout( async () => {
 				await interaction.editReply({ content:`${target} IS TO POWERFUL FOR ME!`});
 			}, 2000);
 		} else {
-			await target.kick("Salazan has smited you :)");
+			await target.setNickname('Slave of Salazan');	//target.guild.members.get(bot.user.id).setNickname('Slave of Salazan');
 		}
 	},
 };
