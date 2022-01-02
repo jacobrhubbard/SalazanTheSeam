@@ -1,18 +1,25 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { Client } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('kill')
-		.setDescription('Remove from the realm')
+		.setName('smite')
+		.setDescription('Remove from thy realm')
         .addUserOption(option => 
 			option
 				.setName('target')
 				.setRequired(true)
-				.setDescription('the target')
+				.setDescription('the one that shall die')
 			),
 	async execute(interaction) {
 		const target = interaction.options.getMember('target');
 		await interaction.reply({ content:`SMITING ${target}` });
-		target.kick("Salazan has smited you :)");
+		if(!target.kickable) {
+			setTimeout( async () => {
+				await interaction.editReply({ content:`${target} IS TO POWERFUL FOR ME!`});
+			}, 2000);
+		} else {
+			target.kick("Salazan has smited you :)");
+		}
 	},
 };
