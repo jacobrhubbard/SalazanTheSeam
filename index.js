@@ -4,6 +4,8 @@ const { token } = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
+
+//Event handler and file
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
@@ -15,6 +17,7 @@ for (const file of eventFiles) {
 	}
 }
 
+//Pulling command files
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -43,8 +46,5 @@ client.on('interactionCreate', async interaction => {
         await interaction.reply({ content: 'There was an error!', ephemeral: true });
     }
 });
-
-//Event Handler
-
 
 client.login(token);
