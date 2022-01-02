@@ -19,7 +19,7 @@ module.exports = {
 				await interaction.editReply({ content:`${target} IS TO POWERFUL FOR ME!`});
 			}, 2000);
 		} else {
-			target.kick("Salazan has smited you :)");
+			await target.kick("Salazan has smited you :)");
 		}
 	},
 };
